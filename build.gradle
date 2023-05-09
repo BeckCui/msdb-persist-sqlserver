@@ -1,0 +1,111 @@
+group 'com.dhl.fin'
+version '1.0'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+javadoc {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(JavaCompile) {
+
+    options.encoding = "UTF-8"
+
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+// 指定上传的路径
+def localMavenRepo = 'file://' + new File("D:\\Tools\\apache-maven-3.6.1\\repository").absolutePath
+jar {
+    baseName = 'fin-common-api'
+    version = '1.0'
+}
+
+gradle.ext.springBootVersion = '2.1.6.RELEASE'
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: gradle.ext.springBootVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: gradle.ext.springBootVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: gradle.ext.springBootVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: gradle.ext.springBootVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: gradle.ext.springBootVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: gradle.ext.springBootVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: gradle.ext.springBootVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: gradle.ext.springBootVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: gradle.ext.springBootVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '2.1.6.RELEASE'
+    compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.1.0'
+    compile group: 'net.devh', name: 'grpc-server-spring-boot-starter', version: '2.9.0.RELEASE'
+    compile group: 'net.devh', name: 'grpc-client-spring-boot-starter', version: '2.9.0.RELEASE'
+    compile group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '7.4.1.jre8'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.18'
+    compile group: 'com.auth0', name: 'java-jwt', version: '3.3.0'
+    compile group: 'com.alibaba', name: 'easyexcel', version: '2.0.5'
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.62'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.2'
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2.2'
+    compile group: 'org.codehaus.janino', name: 'janino', version: '2.7.8'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+    compile group: 'org.mybatis.generator', name: 'mybatis-generator-core', version: '1.4.0'
+    annotationProcessor 'org.projectlombok:lombok:1.18.2'
+    compile 'org.projectlombok:lombok:1.18.2'
+    compile group: 'cn.hutool', name: 'hutool-all', version: '5.2.5'
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.26'
+    compile group: 'com.hierynomus', name: 'sshj', version: '0.27.0'
+    compile group: 'com.github.tuupertunut', name: 'powershell-lib-java', version: '2.0.0'
+    compile group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '3.0.3'
+    compile group: 'org.apache.commons', name: 'commons-csv', version: '1.8'
+    compile group: 'com.jcraft', name: 'jsch', version: '0.1.55'
+}
+
+// 将jar包 发布到本地
+/*
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'com.dhl.fin'
+            artifactId = 'fin-common-api'
+            version = '1.0'
+            from components.java
+            pom {
+                description = 'fintp 公共api。'
+            }
+        }
+    }
+    repositories {
+        maven {
+            url = localMavenRepo
+        }
+    }
+}
+
+*/
+
+
+
+
+
+
+
+
+
+
